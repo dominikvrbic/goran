@@ -11,7 +11,7 @@ function App({}: AppProps) {
       <Router>
         <Switch>
           <Route exact path="/" component={Users} />
-          <Route exact path="/user" component={User} />
+          <Route exact path="/user/:login" component={User} />
         </Switch>
       </Router>
     </div>

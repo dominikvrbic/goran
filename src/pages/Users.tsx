@@ -23,18 +23,20 @@ export const Users = () => {
       {!loading && (
         <Grid templateColumns="repeat(12, 1fr)" gap={6}>
           {value?.items.map((item) => (
-            <GridItem rowSpan={2} colSpan={1} bg="tomato">
-              <Box
-                color="gray.500"
-                fontWeight="semibold"
-                letterSpacing="wide"
-                fontSize="xs"
-                textTransform="uppercase"
-                ml="2"
-              >
-                {item.login}
-              </Box>
-            </GridItem>
+            <a href={'user/' + item.login}>
+              <GridItem rowSpan={2} colSpan={1} bg="tomato">
+                <Box
+                  color="gray.500"
+                  fontWeight="semibold"
+                  letterSpacing="wide"
+                  fontSize="xs"
+                  textTransform="uppercase"
+                  ml="2"
+                >
+                  {item.login}
+                </Box>
+              </GridItem>
+            </a>
           ))}
         </Grid>
       )}
