@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Input } from '@chakra-ui/react';
 import { useAsync } from 'react-use';
+import { Link } from 'react-router-dom';
 import { Grid, GridItem, Box } from '@chakra-ui/react';
 import { sUsers } from '../api/github.api';
 
@@ -23,20 +24,24 @@ export const Users = () => {
       {!loading && (
         <Grid templateColumns="repeat(12, 1fr)" gap={6}>
           {value?.items.map((item) => (
-            <a href={'user/' + item.login}>
-              <GridItem rowSpan={2} colSpan={1} bg="tomato">
-                <Box
-                  color="gray.500"
-                  fontWeight="semibold"
-                  letterSpacing="wide"
-                  fontSize="xs"
-                  textTransform="uppercase"
-                  ml="2"
-                >
-                  {item.login}
-                </Box>
-              </GridItem>
-            </a>
+            <GridItem
+              as={Link}
+              to={`/user/${item.login}`}
+              rowSpan={2}
+              colSpan={1}
+              bg="tomato"
+            >
+              <Box
+                color="gray.500"
+                fontWeight="semibold"
+                letterSpacing="wide"
+                fontSize="xs"
+                textTransform="uppercase"
+                ml="2"
+              >
+                {item.login}
+              </Box>
+            </GridItem>
           ))}
         </Grid>
       )}

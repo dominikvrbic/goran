@@ -1,8 +1,8 @@
-import { Link } from '@chakra-ui/react';
-import React, { Fragment, useState } from 'react';
-import type { RouteComponentProps, withRouter } from 'react-router';
+import React, { Fragment } from 'react';
+import type { RouteComponentProps } from 'react-router';
 import { useAsync } from 'react-use';
 import { sUser } from '../api/github.user.api';
+import { Link } from 'react-router-dom';
 
 type UserParams = {
   login: string;
@@ -16,7 +16,7 @@ export const User: React.FC<UserProps> = ({ match }) => {
   }, [match.params.login]);
 
   return (
-    <Fragment>
+    <>
       <Link to="/" className="btn btn-light">
         Back To Search
       </Link>
@@ -39,10 +39,10 @@ export const User: React.FC<UserProps> = ({ match }) => {
         </div>
         <div>
           {value?.bio && (
-            <Fragment>
+            <>
               <h3>Bio</h3>
               <p>{value?.bio}</p>
-            </Fragment>
+            </>
           )}
           <a href={value?.html_url} className="btn btn-dark my-1">
             Visit Github Profile
@@ -50,23 +50,23 @@ export const User: React.FC<UserProps> = ({ match }) => {
           <ul>
             <li>
               {value?.login && (
-                <Fragment>
+                <>
                   <strong>Username:</strong> {value?.login}
-                </Fragment>
+                </>
               )}
             </li>
             <li>
               {value?.company && (
-                <Fragment>
+                <>
                   <strong>Company:</strong> {value?.company}
-                </Fragment>
+                </>
               )}
             </li>
             <li>
               {value?.blog && (
-                <Fragment>
+                <>
                   <strong>Website:</strong> {value?.blog}
-                </Fragment>
+                </>
               )}
             </li>
           </ul>
@@ -82,6 +82,6 @@ export const User: React.FC<UserProps> = ({ match }) => {
           Public Gists: {value?.public_gists}
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
